@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import './question.dart';
 import './answer.dart';
+import './quiz.dart';
+import './result.dart';
 
 void main() => runApp(MyApp());
 
@@ -11,47 +13,44 @@ class MyApp extends StatefulWidget {
 }
 
 class MyAppState extends State<MyApp> {
-  var qIndex = 0;
+  final _questions = const [
+    {
+      'qText': 'what\'s your fav soda',
+      'aText': ['Cola', 'Fanta', 'Sprite'],
+    },
+    {
+      'qText': 'what\'s your fav color',
+      'aText': ['Blue', 'Red', 'Green'],
+    },
+    {
+      'qText': 'what\'s your fav animal',
+      'aText': ['Horse', 'Dog', 'Cat']
+    },
+  ];
+  var _qIndex = 0;
 
-  void answerQ() {
+  void _answerQ() {
     setState(() {
-      qIndex++;
+      _qIndex++;
       // print("questions");
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    var questions = [
-      {
-        'qText': 'what\'s your fav soda',
-        'aText': ['Cola', 'Fanta', 'Sprite'],
-      },
-      {
-        'qText': 'what\'s your fav color',
-        'aText': ['Blue', 'Red', 'Green'],
-      },
-      {
-        'qText': 'what\'s your fav animal',
-        'aText': ['Horse', 'Dog', 'Cat']
-      },
-    ];
-
     return MaterialApp(
       theme: ThemeData(primarySwatch: Colors.indigo),
       home: Scaffold(
-        appBar: AppBar(
-          title: Text('Myapp'),
-        ),
-        body: Column(children: [
-          Question(
-            questions[qIndex]['qText'] as String,
+          appBar: AppBar(
+            title: Text('Myapp'),
           ),
-          ...(questions[qIndex]['aText'] as List<String>).map(
-            (e) => Answer(answerQ, e),
-          )
-        ]),
-      ),
+          body: _qIndex < _questions.length
+              ? Quiz(
+                  answerQ: _answerQ,
+                  questions: _questions,
+                  qIndex: _qIndex,
+                )
+              : Result()),
     );
   }
 }
