@@ -10,8 +10,8 @@ class Answer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      margin: EdgeInsets.symmetric(horizontal: 40, vertical: 2),
-      color: Color.fromARGB(250, 0, 0, 0),
+      height: 60,
+      margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       child: ElevatedButton(
         // style: ButtonStyle(
         //     backgroundColor: MaterialStateProperty.all(

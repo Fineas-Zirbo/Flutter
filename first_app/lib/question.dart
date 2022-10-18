@@ -7,10 +7,10 @@ class Question extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color.fromARGB(255, 117, 96, 96),
+      color: Color.fromARGB(255, 244, 222, 222),
       width: double.infinity,
       padding: EdgeInsets.symmetric(vertical: 10),
-      margin: EdgeInsets.symmetric(horizontal: 1),
+      margin: EdgeInsets.symmetric(horizontal: 5),
       child: Text(
         questionText,
         style: TextStyle(fontSize: 28),

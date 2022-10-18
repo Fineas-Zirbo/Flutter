@@ -29,6 +29,12 @@ class MyAppState extends State<MyApp> {
   ];
   var _qIndex = 0;
 
+  void _reset() {
+    setState(() {
+      _qIndex = 0;
+    });
+  }
+
   void _answerQ() {
     setState(() {
       _qIndex++;
@@ -39,7 +45,7 @@ class MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(primarySwatch: Colors.indigo),
+      theme: ThemeData(primarySwatch: Colors.blueGrey),
       home: Scaffold(
           appBar: AppBar(
             title: Text('Myapp'),
@@ -50,7 +56,7 @@ class MyAppState extends State<MyApp> {
                   questions: _questions,
                   qIndex: _qIndex,
                 )
-              : Result()),
+              : Result(_reset)),
     );
   }
 }
